@@ -23,6 +23,8 @@ from log import logger
 
 from server import app, static_dir
 
+from win10toast import ToastNotifier
+import tomllib
 
 # 启动键盘监听的同时运行FastAPI服务器
 def start_api():
@@ -84,6 +86,17 @@ if __name__ == "__main__":
     # 启动键盘监听器和 API 服务器
     threading.Thread(target=start_listener).start()
     threading.Thread(target=start_api).start()
-    webbrowser.open("http://127.0.0.1:21315/")
+    with open("config.toml", "br") as f:
+        data = tomllib.load(f)
+    if data.get('startup_items', {}).get('open_web', False):
+        webbrowser.open("http://127.0.0.1:21315/")
+    if data.get('startup_items', {}).get('show_notification', False):
+        ToastNotifier().show_toast(
+        title="TraceBoard",
+        msg="启动成功",
+        icon_path="server\\static\\logo3.0.ico",
+        duration=1,
+        threaded=True
+        )
     # 设置托盘图标
     setup_tray_icon()

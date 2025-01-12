@@ -20,6 +20,10 @@ Windows用户可以直接[点击下载](https://github.com/LC044/TraceBoard/rele
 ```bash
 pip install -r requirements.txt
 ```
+```bash
+pip install win10toast
+```
+在3.10或更低版本的python时需要`pip install toml`
 
 ### 运行main.py
 
@@ -30,3 +34,8 @@ python main.py
 ## 感谢
 
 [键盘UI](https://yanyunfeng.com/article/41)
+
+## 改动说明
+
+添加了一个配置文件来关闭启动时自动打开网页,或者使用windows通知来提示启动状态
+[原项目地址](https://github.com/LC044/TraceBoard)
