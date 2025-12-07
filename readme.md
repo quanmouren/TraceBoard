@@ -30,6 +30,14 @@ pip install win10toast
 ```bash
 python main.py
 ```
+### 升级数据库
+
+如果是从旧版本升级到新版本，需要升级数据库。可以在命令行中执行以下命令：
+
+```bash
+python upgrade_db.py
+```
+
 
 ## 感谢
 
