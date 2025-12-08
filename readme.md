@@ -13,8 +13,6 @@
 
 ## 使用
 
-Windows用户可以直接[点击下载](https://github.com/LC044/TraceBoard/releases)exe可执行文件，直接双击就能运行。其他系统用户可以自行编译(运行)源码。
-
 ### 安装依赖
 
 ```bash
@@ -47,4 +45,5 @@ python upgrade_db.py
 
 1. 添加了一个配置文件来关闭启动时自动打开网页,或者使用windows通知来提示启动状态
 [原项目地址](https://github.com/LC044/TraceBoard)
+
 2. 将数据库拆分为多个表，分别存储按键记录、总计信息,减少卡顿
