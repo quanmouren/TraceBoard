@@ -9,7 +9,7 @@
         html, body, div {
             margin: 0;
             padding: 0;
-			font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
         }
         .tooltip {
             display: none;
@@ -21,17 +21,22 @@
             font-size: 12px;
             z-index: 1000;
         }
-		/* 容器 */
+
+        
         .container {
             width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;          
             justify-content: center;
             align-items: center;
             background-color: #000033;
+            padding: 28px 18px 40px;         
+            box-sizing: border-box;
+            gap: 20px;                       
         }
 
-		/* 键盘 */
+        
         .keyboard {
             display: flex;
             border-radius: 10px;
@@ -40,7 +45,7 @@
             padding: 30px;
         }
 
-		/* 按键 */
+        
         .key {
             display: flex;
             flex-direction: column;
@@ -54,19 +59,14 @@
             color: #666;
             font-size: 13px;
             cursor: pointer;
-			transition: .1s;
+            transition: .1s;
         }
-        .key:hover, .active {
-            box-shadow: 0 0 3px 1px #999;
-        }
+        .key:hover, .active { box-shadow: 0 0 3px 1px #999; }
 
-        /* 空键 */
-        .key-empty {
-            width: 40px;
-            height: 40px;
-        }
+        
+        .key-empty { width: 40px; height: 40px; }
 
-        /* 气泡键 */
+        
         .key-bubble {
             display: flex;
             justify-content: center;
@@ -81,7 +81,7 @@
             box-shadow: 0 0 10px 1px #000, 0 0 10px 1px #fff inset;
         }
 
-		/* 区域一 */
+        
         .area-1 {
             width: 740px;
             display: flex;
@@ -90,7 +90,7 @@
             align-content: baseline;
         }
 
-		/* 区域二 */
+        
         .area-2 {
             width: 140px;
             margin-left: 20px;
@@ -104,7 +104,7 @@
             gap: 10px;
         }
 
-		/* 区域三 */
+        
         .area-3 {
             width: 190px;
             margin-left: 20px;
@@ -112,10 +112,7 @@
             flex-direction: column;
             gap: 10px;
         }
-        .area-3-light {
-            display: flex;
-            gap: 10px;
-        }
+        .area-3-light { display: flex; gap: 10px; }
         .area-3-light-item {
             width: 40px;
             height: 40px;
@@ -123,25 +120,182 @@
             text-align: center;
             color: #999;
         }
-        .area-3-number {
-            display: flex;
-            gap: 10px;
-        }
+        .area-3-number { display: flex; gap: 10px; }
         .area-3-number-item {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
+
+        
+        .dashboard {
+            width: min(1120px, 100%);        
+            display: grid;
+            grid-template-columns: 1fr;      
+            gap: 14px;
+            box-sizing: border-box;
+        }
+
+        .panel {
+            background: rgba(255,255,255,0.70);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 14px;
+            padding: 14px 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .panel-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .subtle {
+            font-size: 12px;
+            color: rgba(0,0,0,0.55);
+            font-weight: 500;
+        }
+
+        .heatmap { user-select: none; }
+        .heatmap-grid {
+            display: flex;
+            gap: 3px;
+            align-items: flex-start;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+        .heatmap-week {
+            display: grid;
+            grid-template-rows: repeat(7, 12px);
+            gap: 3px;
+        }
+        .heat-cell {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            background: rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .heat-cell:hover { outline: 2px solid rgba(0,0,0,0.14); }
+
+        .heatmap-month-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 8px;
+        }
+        .month-cell {
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.06);
+            background: rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8px 10px;
+        }
+        .month-label { font-size: 12px; font-weight: 700; }
+        .month-value {
+            font-size: 12px;
+            color: rgba(0,0,0,0.6);
+            margin-top: 2px;
+        }
+
+        .hotkey-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        select {
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.9);
+            outline: none;
+        }
+        .btn {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.9);
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .btn:active { transform: translateY(1px); }
+
+        .hotkey-list {
+            margin-top: 10px;
+            display: grid;
+            gap: 6px;
+            font-size: 12px;
+            color: rgba(0,0,0,0.7);
+        }
+        .hotkey-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 6px 10px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        
+@media (max-width: 980px) {
+            .heatmap-month-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+    
+
+.mode-link{
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: rgba(255,255,255,0.55);
+    font-size: 12px;
+    color: rgba(0,0,0,0.65);
+    user-select: none;
+    transition: .12s;
+}
+.mode-link:hover{
+    background: rgba(255,255,255,0.8);
+}
+.mode-link.active{
+    background: rgba(0,0,0,0.08);
+    color: rgba(0,0,0,0.8);
+    border-color: rgba(0,0,0,0.18);
+}
+.mode-sep{ margin: 0 6px; color: rgba(0,0,0,0.35); }
+
+
+.hourly-grid{
+    display: grid;
+    grid-template-columns: repeat(24, 12px);
+    gap: 3px;
+    align-items: end;
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+.hour-cell{
+    width: 12px;
+    height: 24px;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.hour-cell:hover{ outline: 2px solid rgba(0,0,0,0.14); }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="keyboard">
-			<!-- 区域一 -->
-            <div class="area-1">
-                <!-- line1 -->
-                <!-- <div class="key" id="k27" style="background-color: orange; color: #f5f5f5;">Esc</div> -->
-                <div class="key" id="k27">Esc</div>
+                <div class="keyboard">
+                        <div class="area-1">
+                                <div class="key" id="k27">Esc</div>
                 <div class="key" id="k112" style="margin-left: 50px;">F1</div>
                 <div class="key" id="k113">F2</div>
                 <div class="key" id="k114">F3</div>
@@ -154,8 +308,8 @@
                 <div class="key" id="k121">F10</div>
                 <div class="key" id="k122">F11</div>
                 <div class="key" id="k123">F12</div>
-                <!-- line2 -->
-                <div class="key" id="k192"><span>~</span><span>`</span></div>
+
+                                <div class="key" id="k192"><span>~</span><span>`</span></div>
                 <div class="key" id="k49"><span>!</span><span>1</span></div>
                 <div class="key" id="k50"><span>@</span><span>2</span></div>
                 <div class="key" id="k51"><span>#</span><span>3</span></div>
@@ -169,8 +323,8 @@
                 <div class="key" id="k189"><span>-</span><span>-</span></div>
                 <div class="key" id="k187"><span>=</span><span>+</span></div>
                 <div class="key" id="k8" style="width: 90px;">←</div>
-                <!-- line3 -->
-                <div class="key" id="k9" style="width: 70px;">Tab</div>
+
+                                <div class="key" id="k9" style="width: 70px;">Tab</div>
                 <div class="key" id="k81">Q</div>
                 <div class="key" id="k87">W</div>
                 <div class="key" id="k69">E</div>
@@ -184,8 +338,8 @@
                 <div class="key" id="k219"><span>[</span><span>{</span></div>
                 <div class="key" id="k221"><span>]</span><span>}</span></div>
                 <div class="key" id="k220" style="width: 60px;"><span>\</span><span>|</span></div>
-                <!-- line4 -->
-                <div class="key" id="k20" style="width: 85px;">Caps Lock</div>
+
+                                <div class="key" id="k20" style="width: 85px;">Caps Lock</div>
                 <div class="key" id="k65">A</div>
                 <div class="key" id="k83">S</div>
                 <div class="key" id="k68">D</div>
@@ -198,8 +352,8 @@
                 <div class="key" id="k186"><span>;</span><span>:</span></div>
                 <div class="key" id="k222"><span>'</span><span>"</span></div>
                 <div class="key" id="k13" style="width: 95px;">Enter</div>
-                <!-- line5 -->
-                <div class="key" id="k16_left" style="width: 115px;">Shift</div>
+
+                                <div class="key" id="k16_left" style="width: 115px;">Shift</div>
                 <div class="key" id="k90">Z</div>
                 <div class="key" id="k88">X</div>
                 <div class="key" id="k67">C</div>
@@ -211,8 +365,8 @@
                 <div class="key" id="k190"><span>.</span><span>></span></div>
                 <div class="key" id="k191"><span>/</span><span>?</span></div>
                 <div class="key" id="k16_right" style="width: 115px;">Shift</div>
-                <!-- line6 -->
-                <div class="key" id="k17_left" style="width: 50px;">Ctrl</div>
+
+                                <div class="key" id="k17_left" style="width: 50px;">Ctrl</div>
                 <div class="key" id="k91" style="width: 50px;">Win</div>
                 <div class="key" id="k18_left" style="width: 50px;">Alt</div>
                 <div class="key" id="k32" style="width: 320px;"></div>
@@ -221,10 +375,8 @@
                 <div class="key" id="k17_right" style="width: 50px;">Ctrl</div>
             </div>
 
-			<!-- 区域二 -->
-            <div class="area-2">
-				<!-- 上 -->
-                <div class="area-2-item">
+                        <div class="area-2">
+                                <div class="area-2-item">
                     <div class="key" id="k44">Print</div>
                     <div class="key" id="k145">Lock</div>
                     <div class="key" id="k19">Pause</div>
@@ -235,8 +387,7 @@
                     <div class="key" id="k35">End</div>
                     <div class="key" id="k34">Down</div>
                 </div>
-				<!-- 下 -->
-                <div class="area-2-item">
+                                <div class="area-2-item">
                     <div class="key-empty"></div>
                     <div class="key" id="k38">↑</div>
                     <div class="key-empty"></div>
@@ -246,19 +397,15 @@
                 </div>
             </div>
 
-			<!-- 区域三 -->
-            <div class="area-3">
-				<!-- 指示灯 -->
-                <div class="area-3-light">
+                        <div class="area-3">
+                                <div class="area-3-light">
                     <div class="area-3-light-item" style="color: orangered;">◘</div>
                     <div class="area-3-light-item">◘</div>
                     <div class="area-3-light-item">◘</div>
                     <div class="area-3-light-item">◘</div>
                 </div>
-				<!-- 数字小键盘 -->
-                <div class="area-3-number">
-					<!-- 左 -->
-                    <div class="area-3-number-item">
+                                <div class="area-3-number">
+                                        <div class="area-3-number-item">
                         <div class="key" id="k144">Num</div>
                         <div class="key" id="k111">/</div>
                         <div class="key" id="k106">*</div>
@@ -274,8 +421,7 @@
                         <div class="key" id="k96" style="width: 90px;">0</div>
                         <div class="key" id="k110">.</div>
                     </div>
-					<!-- 右 -->
-                    <div class="area-3-number-item">
+                                        <div class="area-3-number-item">
                         <div class="key" id="k109">-</div>
                         <div class="key" id="k107" style="height: 90px;">+</div>
                         <div class="key" id="k13_num" style="height: 90px;">Enter</div>
@@ -283,29 +429,62 @@
                 </div>
             </div>
         </div>
+
+                <div class="dashboard">
+            <div class="panel">
+  <div class="panel-title">Activity Heatmap </div>
+  <div class="activity-split">
+    <div class="activity-block">
+      <div class="activity-block-title">最近 120 天（按键次数）</div>
+      <div id="activityHeatmap120" class="heatmap"></div>
+    </div>
+    <div class="activity-block">
+      <div class="activity-block-title">最近 24 小时</div>
+      <div id="activityHeatmap24" class="heatmap"></div>
+    </div>
+  </div>
+</div>
+
+            <div class="panel">
+                <div class="panel-title">Monthly Activity </div>
+                <div id="monthlyHeatmap" class="heatmap"></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Hotkeys </div>
+                <div class="hotkey-row">
+                    <select id="hotkeySelect"></select>
+                    <button id="refreshHotkey" class="btn">刷新</button>
+                </div>
+                <div id="hotkeyHeatmap" class="heatmap"></div>
+                <div id="hotkeyTopList" class="hotkey-list"></div>
+            </div>
+        </div>
+
         <div id="tooltip" class="tooltip"></div>
     </div>
+
     <script>
-		// 获取按键选择器
+        // 获取按键选择器
         const getSelector = () => {
             let selector = ''
             // 区分 shift alt control 左右键
             if ([16, 17, 18].includes(event.keyCode)) {
                 selector = `#k${event.keyCode}${event.code.endsWith('Left') ? '_left' : '_right'}`
             } else {
-				// 区分 enter 键
-				if (event.keyCode === 13 && event.code === 'NumpadEnter') {
-					selector = `#k${event.keyCode}_num` // 数字小键盘中的 enter 键
-				} else {
-					selector = `#k${event.keyCode}`
-				}
+                // 区分 enter 键
+                if (event.keyCode === 13 && event.code === 'NumpadEnter') {
+                    selector = `#k${event.keyCode}_num` // 数字小键盘中的 enter 键
+                } else {
+                    selector = `#k${event.keyCode}`
+                }
             }
             return selector
         }
 
         // 按下
         document.addEventListener('keydown', (event) => {
-			console.log({event})
+            console.log({event})
             const key = document.querySelector(getSelector())
             key && key.classList.add('active')
         })
@@ -352,6 +531,7 @@
             }
         })
     </script>
+
     <script>
         // 获取按键选择器
         function getId(vk,flag){
@@ -378,8 +558,6 @@
             const endColor = [255, 0, 0]; // 蓝色 (RGB)
             n = 20;
             index = value / maxValue*n;
-            // 存储结果
-            let colors = [];
             // 计算当前段的比例 (从 0 到 1)
             let ratio = index / n;
             // 对每个通道进行线性插值
@@ -389,10 +567,11 @@
             return `rgb(${r}, ${g}, ${b})`;
         }
         const tooltip = document.getElementById('tooltip');
+
         // 获取按键点击次数并设置热力图
         async function fetchKeyCounts() {
             try {
-                const response = await fetch('http://localhost:21315/key_counts');
+                const response = await fetch('/key_counts');
                 const keyCounts = await response.json();
                 // 获取最大按键点击次数
                 const maxCount = Math.max(...keyCounts.map(item => item.count));
@@ -405,12 +584,12 @@
                         keyElement.addEventListener('mouseover', function(event) {
                             tooltip.textContent = `${item.count}`;
                             tooltip.style.display = 'block';
-                            tooltip.style.left = event.pageX + 10 + 'px';  // Position tooltip next to mouse
+                            tooltip.style.left = event.pageX + 10 + 'px';
                             tooltip.style.top = event.pageY + 10 + 'px';
                         });
 
                         keyElement.addEventListener('mousemove', function(event) {
-                            tooltip.style.left = event.pageX + 10 + 'px';  // Update tooltip position
+                            tooltip.style.left = event.pageX + 10 + 'px';
                             tooltip.style.top = event.pageY + 10 + 'px';
                         });
 
@@ -426,6 +605,314 @@
 
         // 每秒钟请求一次数据更新热力图
         setInterval(fetchKeyCounts, 1000);
+
+        // ===== Timeline & Hotkeys (v2) =====
+        function parseDateYYYYMMDD(s) {
+            const [y,m,d] = s.split('-').map(x => parseInt(x, 10));
+            return new Date(y, m-1, d);
+        }
+
+        function formatDateYYYYMMDD(dt) {
+            const y = dt.getFullYear();
+            const m = String(dt.getMonth()+1).padStart(2,'0');
+            const d = String(dt.getDate()).padStart(2,'0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function renderDailyHeatmap(containerId, daySeries, valueKey, labelPrefix) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            // 清空
+            container.innerHTML = '';
+            container.classList.add('heatmap');
+
+            // 生成 date->value 映射
+            const mp = {};
+            let maxV = 0;
+            for (const it of daySeries) {
+                const v = Math.max(0, parseInt(it[valueKey] ?? it.count ?? 0, 10));
+                mp[it.date] = v;
+                if (v > maxV) maxV = v;
+            }
+
+            // 计算范围（基于返回数组首尾）
+            const start = parseDateYYYYMMDD(daySeries[0].date);
+            const end = parseDateYYYYMMDD(daySeries[daySeries.length-1].date);
+
+            // 对齐到周日开头（GitHub 风格）
+            const alignedStart = new Date(start);
+            alignedStart.setDate(alignedStart.getDate() - alignedStart.getDay());
+
+            const grid = document.createElement('div');
+            grid.className = 'heatmap-grid';
+
+            const tooltip = document.getElementById('tooltip');
+
+            // 遍历每周
+            let cursor = new Date(alignedStart);
+            while (cursor <= end) {
+                const week = document.createElement('div');
+                week.className = 'heatmap-week';
+
+                for (let i=0;i<7;i++) {
+                    const cellDate = new Date(cursor);
+                    cellDate.setDate(cellDate.getDate() + i);
+                    const ds = formatDateYYYYMMDD(cellDate);
+                    const cell = document.createElement('div');
+                    cell.className = 'heat-cell';
+
+                    const inRange = (cellDate >= start && cellDate <= end);
+                    const v = inRange ? (mp[ds] ?? 0) : 0;
+
+                    if (inRange && maxV > 0) {
+                        cell.style.backgroundColor = generateRGBColors(v, maxV);
+                    } else {
+                        cell.style.backgroundColor = 'rgba(0,0,0,0.04)';
+                    }
+
+                    if (inRange) {
+                        cell.addEventListener('mouseover', function(ev){
+                            tooltip.textContent = `${labelPrefix}${v}  •  ${ds}`;
+                            tooltip.style.display = 'block';
+                            tooltip.style.left = (ev.pageX + 10) + 'px';
+                            tooltip.style.top = (ev.pageY + 10) + 'px';
+                        });
+                        cell.addEventListener('mousemove', function(ev){
+                            tooltip.style.left = (ev.pageX + 10) + 'px';
+                            tooltip.style.top = (ev.pageY + 10) + 'px';
+                        });
+                        cell.addEventListener('mouseout', function(){
+                            tooltip.style.display = 'none';
+                        });
+                    }
+
+                    week.appendChild(cell);
+                }
+
+                grid.appendChild(week);
+                cursor.setDate(cursor.getDate() + 7);
+            }
+
+            container.appendChild(grid);
+        }
+
+        function renderMonthlyHeatmap(containerId, monthSeries) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = '';
+            const grid = document.createElement('div');
+            grid.className = 'heatmap-month-grid';
+
+            let maxV = 0;
+            for (const it of monthSeries) {
+                const v = Math.max(0, parseInt(it.key_presses ?? 0, 10));
+                if (v > maxV) maxV = v;
+            }
+
+            const tooltip = document.getElementById('tooltip');
+
+            for (const it of monthSeries) {
+                const cell = document.createElement('div');
+                cell.className = 'month-cell';
+
+                const v = Math.max(0, parseInt(it.key_presses ?? 0, 10));
+                if (maxV > 0) {
+                    cell.style.backgroundColor = generateRGBColors(v, maxV);
+                }
+
+                const label = document.createElement('div');
+                label.className = 'month-label';
+                label.textContent = it.month;
+
+                const value = document.createElement('div');
+                value.className = 'month-value';
+                value.textContent = `keys: ${v}`;
+
+                cell.appendChild(label);
+                cell.appendChild(value);
+
+                cell.addEventListener('mouseover', function(ev){
+                    tooltip.textContent = `keys: ${v}  •  ${it.month}`;
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = (ev.pageX + 10) + 'px';
+                    tooltip.style.top = (ev.pageY + 10) + 'px';
+                });
+                cell.addEventListener('mousemove', function(ev){
+                    tooltip.style.left = (ev.pageX + 10) + 'px';
+                    tooltip.style.top = (ev.pageY + 10) + 'px';
+                });
+                cell.addEventListener('mouseout', function(){
+                    tooltip.style.display = 'none';
+                });
+
+                grid.appendChild(cell);
+            }
+
+            container.appendChild(grid);
+        }
+
+        
+
+function renderHourlyHeatmap(containerId, hourSeries) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = '';
+    const grid = document.createElement('div');
+    grid.className = 'hourly-grid';
+
+    const tooltip = document.getElementById('tooltip');
+
+    let maxV = 0;
+    const items = [];
+    for (const it of hourSeries) {
+        const v = Math.max(0, parseInt(it.key_presses ?? it.count ?? 0, 10));
+        if (v > maxV) maxV = v;
+        items.push({ hour: it.hour, v });
+    }
+
+    for (const it of items) {
+        const cell = document.createElement('div');
+        cell.className = 'hour-cell';
+        if (maxV > 0) cell.style.backgroundColor = generateRGBColors(it.v, maxV);
+
+        cell.addEventListener('mouseover', function(ev){
+            tooltip.textContent = `keys: ${it.v}  •  ${it.hour}:00`;
+            tooltip.style.display = 'block';
+            tooltip.style.left = (ev.pageX + 10) + 'px';
+            tooltip.style.top = (ev.pageY + 10) + 'px';
+        });
+        cell.addEventListener('mousemove', function(ev){
+            tooltip.style.left = (ev.pageX + 10) + 'px';
+            tooltip.style.top = (ev.pageY + 10) + 'px';
+        });
+        cell.addEventListener('mouseout', function(){
+            tooltip.style.display = 'none';
+        });
+
+        grid.appendChild(cell);
+    }
+
+    container.appendChild(grid);
+    // 主动释放临时引用，降低长期运行的内存占用
+    items.length = 0;
+}
+
+async function fetchActivityDaily() {
+            try {
+                const resp = await fetch('/activity_daily?days=120');
+                const data = await resp.json();
+                renderDailyHeatmap('activityHeatmap120', data, 'key_presses', 'keys: ');
+            } catch (e) {
+                console.error('Error fetching activity_daily:', e);
+            }
+        }
+
+async function fetchActivityHourly() {
+    try {
+        const resp = await fetch('/activity_hourly?hours=24');
+        const data = await resp.json();
+        renderHourlyHeatmap('activityHeatmap24', data);
+    } catch (e) {
+        console.error('Error fetching activity_hourly:', e);
+    }
+}
+
+
+        async function fetchActivityMonthly() {
+            try {
+                const resp = await fetch('/activity_monthly?months=24');
+                const data = await resp.json();
+                renderMonthlyHeatmap('monthlyHeatmap', data);
+            } catch (e) {
+                console.error('Error fetching activity_monthly:', e);
+            }
+        }
+
+        function renderHotkeyTopList(items) {
+            const box = document.getElementById('hotkeyTopList');
+            if (!box) return;
+            box.innerHTML = '';
+            for (const it of items) {
+                const row = document.createElement('div');
+                row.className = 'hotkey-item';
+                const left = document.createElement('div');
+                left.textContent = it.display_name || it.hotkey_id;
+                const right = document.createElement('div');
+                right.textContent = it.total_count;
+                row.appendChild(left);
+                row.appendChild(right);
+                box.appendChild(row);
+            }
+        }
+
+        async function fetchHotkeyTotals() {
+            try {
+                const resp = await fetch('/hotkey_totals?limit=20');
+                const items = await resp.json();
+                renderHotkeyTopList(items);
+
+                const sel = document.getElementById('hotkeySelect');
+                if (sel && sel.options.length === 0) {
+                    // “全部”：聚合所有快捷键
+                    const allOpt = document.createElement('option');
+                    allOpt.value = '__ALL__';
+                    allOpt.textContent = '全部（All Hotkeys）';
+                    sel.appendChild(allOpt);
+
+                    for (const it of items) {
+                        const opt = document.createElement('option');
+                        opt.value = it.hotkey_id;
+                        opt.textContent = it.display_name || it.hotkey_id;
+                        sel.appendChild(opt);
+                    }
+                }
+                return items;
+            } catch (e) {
+                console.error('Error fetching hotkey_totals:', e);
+                return [];
+            }
+        }
+
+        async function fetchHotkeySeries() {
+            const sel = document.getElementById('hotkeySelect');
+            const hotkeyId = sel ? sel.value : '';
+            if (!hotkeyId) {
+                document.getElementById('hotkeyHeatmap').innerHTML = '<div class="subtle">暂无快捷键数据</div>';
+                return;
+            }
+            try {
+                const resp = await fetch(`/hotkey_series?hotkey_id=${encodeURIComponent(hotkeyId)}&days=120`);
+                const data = await resp.json();
+                renderDailyHeatmap('hotkeyHeatmap', data, 'count', 'count: ');
+            } catch (e) {
+                console.error('Error fetching hotkey_series:', e);
+            }
+        }
+
+        document.getElementById('refreshHotkey')?.addEventListener('click', async () => {
+            await fetchHotkeyTotals();
+            await fetchHotkeySeries();
+        });
+
+        document.getElementById('hotkeySelect')?.addEventListener('change', async () => {
+            await fetchHotkeySeries();
+        });
+
+        // 首次加载
+        fetchActivityDaily();
+        fetchActivityHourly();
+        fetchActivityMonthly();
+        fetchHotkeyTotals().then(() => fetchHotkeySeries());
+
+        // 定时刷新（频率低一点）
+        setInterval(fetchActivityDaily, 10_000);
+        setInterval(fetchActivityHourly, 10_000);
+        setInterval(fetchActivityMonthly, 60_000);
+        setInterval(fetchHotkeyTotals, 30_000);
+        setInterval(fetchHotkeySeries, 30_000);
     </script>
 </body>
 </html>

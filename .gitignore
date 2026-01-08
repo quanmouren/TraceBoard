@@ -5,4 +5,10 @@ dist
 *test*
 *.log
 *.spec
-*.db
+*.dbv3
+*/__pycache__/
+key_events.db-shm
+key_events.db-wal
+key_events old.db
+key_events.db
+build.py
