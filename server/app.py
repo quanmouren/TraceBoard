@@ -24,7 +24,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # 数据库
-DATABASE_URL = "sqlite:///./key_events.db"  # SQLite 数据库路径
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+DB_PATH = os.path.join(PROJECT_ROOT, "key_events.db")
+DATABASE_URL = f"sqlite:///{DB_PATH}"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 Base = declarative_base()
 

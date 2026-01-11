@@ -118,9 +118,7 @@ def update_key_stats_in_db(key_name: str, virtual_key_code: int):
             db.add(KeyTotalStats(
                 key_name=key_name,
                 virtual_key_code=vk,
-                total_daily_count=1,
-                display_name=display_name,
-                last_triggered=now,
+                total_count=1,
                 last_updated=now
             ))
 
@@ -138,9 +136,7 @@ def update_key_stats_in_db(key_name: str, virtual_key_code: int):
                 key_name=key_name,
                 virtual_key_code=vk,
                 stat_month=current_month,
-                monthly_daily_count=1,
-                display_name=display_name,
-                last_triggered=now
+                monthly_count=1
             ))
 
         # 日活跃度
