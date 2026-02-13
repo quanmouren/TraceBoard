@@ -129,7 +129,7 @@
 
         
         .dashboard {
-            width: min(1120px, 100%);        
+            width: min(1170px, 100%);        
             display: grid;
             grid-template-columns: 1fr;      
             gap: 14px;
@@ -288,6 +288,15 @@
     border: 1px solid rgba(0,0,0,0.05);
 }
 .hour-cell:hover{ outline: 2px solid rgba(0,0,0,0.14); }
+
+        .activity-split {
+            display: flex;
+            gap: 20px;
+        }
+
+        .activity-block {
+            flex: 1;
+        }
 
     </style>
 </head>
@@ -556,8 +565,8 @@
             // 定义起始颜色和结束颜色
             const startColor = [255, 255, 255]; // 红色 (RGB)
             const endColor = [255, 0, 0]; // 蓝色 (RGB)
-            n = 20;
-            index = value / maxValue*n;
+            const n = 20;
+            const index = value / maxValue * n;
             // 计算当前段的比例 (从 0 到 1)
             let ratio = index / n;
             // 对每个通道进行线性插值
@@ -776,7 +785,12 @@ function renderHourlyHeatmap(containerId, hourSeries) {
     for (const it of items) {
         const cell = document.createElement('div');
         cell.className = 'hour-cell';
-        if (maxV > 0) cell.style.backgroundColor = generateRGBColors(it.v, maxV);
+        if (maxV > 0) {
+            cell.style.backgroundColor = generateRGBColors(it.v, maxV);
+        } else {
+            // 即使没有数据，也要显示单元格
+            cell.style.backgroundColor = 'rgba(0,0,0,0.06)';
+        }
 
         cell.addEventListener('mouseover', function(ev){
             tooltip.textContent = `keys: ${it.v}  •  ${it.hour}:00`;
